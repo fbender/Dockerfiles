@@ -41,14 +41,21 @@ RUN pecl install xdebug; \
 # enable mod_rewrite
 RUN a2enmod rewrite
 
+# In images building upon this image, copy the src/ directory to the webserver
+# root and correct the owner.
+ONBUILD COPY src/ /var/www/html/
+ONBUILD RUN chown -R www-data:www-data /var/www/html
+
 # support jwilder/nginx-proxy resp. docker-gen
 # You may wan to overwrite VIRTUAL_HOST in your Docker file.
 EXPOSE 80
 ENV VIRTUAL_HOST site.local
 
-# Put this into your Dockerfile, build & run it.
-## copy source
-#COPY src/ /var/www/html/
-#RUN chown -R www-data:www-data /var/www/html
+# Put something like this into your Dockerfile if you want to add more files.
+# Note that you need to correctly set the owner otherwise PHP will not be able
+# to edit the file system.
+## copy src-extra
+#COPY src-extra/ /var/www/html/extra/
+#RUN chown -R www-data:www-data /var/www/html/extra
 
 #EOF
