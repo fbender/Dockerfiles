@@ -46,11 +46,7 @@ RUN a2enmod rewrite
 EXPOSE 80
 ENV VIRTUAL_HOST site.local
 
-# Switch to user www-data.
-USER www-data
-
-# Put this into your Dockerfile. You may not need the last line since the user
-# is already set to www-data (the default Apache user).
+# Put this into your Dockerfile, build & run it.
 ## copy source
 #COPY src/ /var/www/html/
 #RUN chown -R www-data:www-data /var/www/html
