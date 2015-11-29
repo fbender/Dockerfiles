@@ -1,0 +1,3 @@
+# file containing environment variables, e.g. MYSQL root user password
+#TODO: uncomment line below
+#MYSQL_ROOT_PASSWORD='secret'
