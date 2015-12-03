@@ -27,6 +27,9 @@ COPY php.ini /usr/local/etc/php/
 # enable mod_rewrite
 RUN a2enmod rewrite
 
+# make the webroot a volume
+VOLUME /var/www/html/
+
 # In images building upon this image, copy the src/ directory to the webserver
 # root and correct the owner.
 ONBUILD COPY src/ /var/www/html/
