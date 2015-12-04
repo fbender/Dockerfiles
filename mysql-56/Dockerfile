@@ -2,7 +2,6 @@ FROM mysql:5.6
 #TODO: look at https://hub.docker.com/r/mysql/mysql-server/
 MAINTAINER Florian Bender <fb+dockerhub@quantumedia.de>
 
-RUN mkdir /envars.d
 COPY docker-env-vars.d/* /envars.d/
 COPY docker-entrypoint-initdb.d/*.{sh,sql} /docker-entrypoint-initdb.d/
 

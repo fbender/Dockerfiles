@@ -19,12 +19,12 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure mysql --with-mysql=mysqlnd \
     && docker-php-ext-install mysql
 
-# Add a PHP config file. The file was copied from a php53 dotdeb package and 
+# Add a PHP config file. The file was copied from a php53 dotdeb package and
 # lightly modified (mostly for improving debugging). This may not be the best
 # idea.
 COPY php.ini /usr/local/etc/php/
 
-# Install xdebug. Couldn't connect to it in my boot2docker instance, useful 
+# Install xdebug. Couldn't connect to it in my boot2docker instance, useful
 # nonetheless.
 # IMPORTANT: These settings are not recommended for production servers!
 RUN pecl install xdebug; \
@@ -53,6 +53,7 @@ ONBUILD RUN chown -R www-data:www-data /var/www/html
 # You may wan to overwrite VIRTUAL_HOST in your Docker file.
 EXPOSE 80
 ENV VIRTUAL_HOST site.local
+ENV UPSTREAM_NAME web-site
 
 # Put something like this into your Dockerfile if you want to add more files.
 # Note that you need to correctly set the owner otherwise PHP will not be able
