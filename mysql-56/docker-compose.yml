@@ -5,12 +5,13 @@ db-mysql:
     build: .
 #    image: fbender/mysql-56
     restart: always
-    volumes_from: volume-db-mysql
+    volumes_from:
+        - volume-db-mysql
     
 volume-db-mysql:
     container_name: volume-db-mysql
     image: mysql:5.6
 #    image: fbender/mysql-56
-    entrypoint: /bin/echo mysql-56 Data-only volume container for: db-mysql
+    entrypoint: /bin/echo mysql-56 Data-only volume container for db-mysql
 
 # EOF

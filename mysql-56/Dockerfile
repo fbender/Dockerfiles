@@ -20,8 +20,10 @@ RUN awk '/^#!/ { \
         print "for f in /envars.d/*; do . $f; done"; \
         print ""; \
         next \
-    }1' /entrypoint.sh > docker-entrypoint.sh \
-    && mv docker-entrypoint.sh /entrypoint.sh
+    }1' /entrypoint.sh > /docker-entrypoint.sh \
+    && echo mv /docker-entrypoint.sh /entrypoint.sh
+    
+ENTRYPOINT /bin/bash
 
 # for images building upon this image, auto-copy config, env files, and entrypoint scripts
 ONBUILD COPY mysql-conf.d/* /etc/mysql/conf.d/
