@@ -1,0 +1,5 @@
+server {
+    listen 80;
+    server_name example.tld;
+    return 301 $scheme://www.example.tld$request_uri;
+}
