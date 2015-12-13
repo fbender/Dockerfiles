@@ -5,7 +5,6 @@ MAINTAINER Florian Bender <fb+dockerhub@quantumedia.de>
 # install automysqlbackup
 RUN apt-get update \
     && apt-get -y install automysqlbackup ssmtp --no-install-recommends \
-    && apt-get -y purge exim4* \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 VOLUME /var/lib/automysqlbackup
@@ -22,8 +21,6 @@ RUN awk '/^#!/ { \
         next \
     }1' /entrypoint.sh > /docker-entrypoint.sh \
     && echo mv /docker-entrypoint.sh /entrypoint.sh
-    
-ENTRYPOINT /bin/bash
 
 # for images building upon this image, auto-copy config, env files, and entrypoint scripts
 ONBUILD COPY mysql-conf.d/* /etc/mysql/conf.d/
