@@ -48,4 +48,8 @@ ENV UPSTREAM_NAME web-site
 #COPY src-extra/ /var/www/html/extra/
 #RUN chown -R www-data:www-data /var/www/html/extra
 
+# Entrypoint file tries to fix permissions, again
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 #EOF
