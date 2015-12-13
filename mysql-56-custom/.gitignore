@@ -1,0 +1,3 @@
+docker-entrypoint-initdb.d/*
+docker-env-vars.d/*
+mysql-conf.d/*

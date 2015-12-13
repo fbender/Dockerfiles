@@ -1,0 +1,5 @@
+# Example for GMail
+#SSMTP_SENDER_ADDRESS=root@localhost
+#SSMTP_HOST=smtp.gmail.com:587
+#SMTP_USER=
+#SMTP_PASS=
