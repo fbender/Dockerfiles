@@ -2,6 +2,14 @@ FROM mysql:5.6
 #TODO: look at https://hub.docker.com/r/mysql/mysql-server/
 MAINTAINER Florian Bender <fb+dockerhub@quantumedia.de>
 
+# install automysqlbackup
+RUN apt-get update \
+    && apt-get -y install automysqlbackup ssmtp --no-install-recommends \
+    && apt-get -y purge exim4* \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/*
+VOLUME /var/lib/automysqlbackup
+
 COPY docker-env-vars.d/* /envars.d/
 COPY docker-entrypoint-initdb.d/*.{sh,sql} /docker-entrypoint-initdb.d/
 
