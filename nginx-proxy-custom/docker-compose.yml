@@ -1,0 +1,10 @@
+proxy:
+    container_name: proxy
+    image: fbender/nginx-proxy-custom
+    restart: always
+    ports:
+        - "80:80"
+    volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+        - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled
+#EOF
