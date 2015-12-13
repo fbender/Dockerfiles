@@ -13,14 +13,7 @@ COPY docker-env-vars.d/* /envars.d/
 COPY docker-entrypoint-initdb.d/* /docker-entrypoint-initdb.d/
 
 # patch the entrypoint file to source (insert after shebang line)
-RUN awk '/^#!/ { \
-        print; \
-        print ""; \
-        print "for f in /envars.d/*; do . $f; done"; \
-        print ""; \
-        next \
-    }1' /entrypoint.sh > /docker-entrypoint.sh \
-    && echo mv /docker-entrypoint.sh /entrypoint.sh
+RUN sed -i.bak '2ifor f in /envars.d/*; do . $f; done\n' /entrypoint.sh
 
 # for images building upon this image, auto-copy config, env files, and entrypoint scripts
 ONBUILD COPY mysql-conf.d/* /etc/mysql/conf.d/
