@@ -1,5 +1,9 @@
+# redirect host to different (sub-)domain
+# after any changes, reload nginx config with: 
+#   $> docker exec -t proxy /etc/init.d/nginx reload
 server {
     listen 80;
     server_name example.tld;
     return 301 $scheme://www.example.tld$request_uri;
 }
+

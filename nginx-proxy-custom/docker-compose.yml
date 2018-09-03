@@ -1,10 +1,14 @@
 proxy:
     container_name: proxy
     image: fbender/nginx-proxy-custom
+#    build: .
     restart: always
+    environment:
+        - ENABLE_IPV6=true
     ports:
         - "80:80"
     volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
+        - /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro
         - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
 #EOF
