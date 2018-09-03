@@ -6,5 +6,5 @@ proxy:
         - "80:80"
     volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
-        - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled
+        - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
 #EOF
