@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
         libgd-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng16-16 \
         libxml2-dev \
         zlib1g-dev \
     && docker-php-ext-install iconv mbstring mcrypt soap sockets zip \
